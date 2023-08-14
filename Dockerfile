@@ -2,6 +2,8 @@ FROM alpine:3.17
 LABEL AUTHOR="Java Home"
 RUN apk add openjdk17-jre
 WORKDIR /opt
+RUN chown -R ec2-user:ec2-user /opt
+USER ec2-user
 ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.73/bin/apache-tomcat-9.0.73.tar.gz .
 RUN tar xf apache-tomcat-9.0.73.tar.gz
 RUN rm -rf apache-tomcat-9.0.73.tar.gz
